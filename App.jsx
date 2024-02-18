@@ -1,8 +1,21 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Text, View, Image, ScrollView } from "react-native";
 import Carousel from "react-native-snap-carousel";
 
 export default function App() {
+  const [typedText, setTypedText] = useState("");
+  const textToType = "Um entusiasta da programação em constante busca por aprendizado. Sempre empenhado em criar soluções inovadoras.";
+
+  useEffect(() => {
+    const typingEffect = setTimeout(() => {
+      if (typedText.length < textToType.length) {
+        setTypedText(textToType.substring(0, typedText.length + 1));
+      }
+    }, 1);
+
+    return () => clearTimeout(typingEffect);
+  }, [typedText]);
+
   const colors = {
     red: "#e23636",
     blue: "#509bfa",
@@ -69,9 +82,10 @@ export default function App() {
         <Text className="text-center text-l text-white mt-4">
           Aluno de Desenvolvimento de Sistemas cursando o 3º Semestre
         </Text>
-        <Text className="text-center text-l text-white mt-4 font-semibold">
-          Um entusiasta da programação em constante busca por aprendizado.
-          Sempre empenhado em criar soluções inovadoras.
+        <Text className="text-center text-l mt-4 font-semibold"
+        style={{ color: "#ff3a5e" }}
+        >
+          {typedText}
         </Text>
         <ScrollView>
           <Text className="text-center text-xl text-white mt-4 font-bold">
