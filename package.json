@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "expo": "~50.0.6",
+    "expo-router": "^3.4.7",
     "expo-status-bar": "~1.11.1",
     "framer-motion": "^11.0.5",
     "nativewind": "^2.0.11",

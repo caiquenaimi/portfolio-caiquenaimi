@@ -1,10 +1,19 @@
 import React, { useState, useEffect } from "react";
-import { Text, View, Image, ScrollView } from "react-native";
+import {
+  Text,
+  View,
+  Image,
+  ScrollView,
+  Touchable,
+  TouchableOpacity,
+} from "react-native";
 import Carousel from "react-native-snap-carousel";
+import { Link } from "expo-router";
 
 export default function App() {
   const [typedText, setTypedText] = useState("");
-  const textToType = "Um entusiasta da programação em constante busca por aprendizado. Sempre empenhado em criar soluções inovadoras.";
+  const textToType =
+    "Um entusiasta da programação em constante busca por aprendizado. Sempre empenhado em criar soluções inovadoras.";
 
   useEffect(() => {
     const typingEffect = setTimeout(() => {
@@ -35,6 +44,7 @@ export default function App() {
         require("./assets/imagens/next.webp"),
       ],
       color: "red",
+      link: "https://marvel-6devs.vercel.app",
     },
     {
       id: "project2",
@@ -47,6 +57,7 @@ export default function App() {
         require("./assets/imagens/js.png"),
       ],
       color: "blue",
+      link: "https://kaminews.netlify.app",
     },
     {
       id: "project3",
@@ -60,6 +71,7 @@ export default function App() {
         require("./assets/imagens/next.webp"),
       ],
       color: "green",
+      link: "https://brasileirao-6devs.vercel.app",
     },
   ];
 
@@ -80,10 +92,12 @@ export default function App() {
           source={require("./assets/imagens/caiquenaimi.png")}
         />
         <Text className="text-center text-l text-white mt-4">
-          Aluno de Desenvolvimento de Sistemas cursando o 3º Semestre
+          Aluno do curso de Desenvolvimento de Sistemas, atualmente no 3º
+          semestre.
         </Text>
-        <Text className="text-center text-l mt-4 font-semibold"
-        style={{ color: "#ff3a5e" }}
+        <Text
+          className="text-center text-l mt-4 font-semibold"
+          style={{ color: "#ff3a5e" }}
         >
           {typedText}
         </Text>
@@ -102,13 +116,24 @@ export default function App() {
                   >
                     {item.title}
                   </Text>
+
                   <Image
                     style={{ width: "100%", height: 237, borderRadius: 10 }}
                     source={item.img}
                   />
-                  <Text className="text-center text-base text-white mt-1">
+                  <Text className="text-center text-white mt-1">
                     {item.description}
                   </Text>
+                  {
+                    <Link href={item.link} className="text-center">
+                      <Text
+                        className="text-center text-white mt-1 underline"
+                        style={{ color: colors[item.color] }}
+                      >
+                        Ver Projeto
+                      </Text>
+                    </Link>
+                  }
                   <Text className="text-center text-base text-white mt-1 ">
                     Tecnologias:
                   </Text>
