@@ -16,7 +16,11 @@ export default function App() {
       description:
         "Site feito utilizando API da Marvel Studios para CRUD de personagens.",
       img: require("./assets/imagens/marvel.png"),
-      technologies: ["React", "Node", "Express"],
+      technologies: [
+        require("./assets/imagens/react.png"),
+        require("./assets/imagens/node.png"),
+        require("./assets/imagens/next.webp"),
+      ],
       color: "red",
     },
     {
@@ -24,7 +28,11 @@ export default function App() {
       title: "Kaminews",
       description: "Blog de noticias desenvolvido em grupo durante o curso.",
       img: require("./assets/imagens/kami.png"),
-      technologies: ["html", "css", "javascript"],
+      technologies: [
+        require("./assets/imagens/html.png"),
+        require("./assets/imagens/css.png"),
+        require("./assets/imagens/js.png"),
+      ],
       color: "blue",
     },
     {
@@ -33,60 +41,82 @@ export default function App() {
       description:
         "Site feito utilizando API do Brasileirão para CRUD de times.",
       img: require("./assets/imagens/brasileirao.png"),
-      technologies: ["React", "Node", "Express"],
+      technologies: [
+        require("./assets/imagens/react.png"),
+        require("./assets/imagens/node.png"),
+        require("./assets/imagens/next.webp"),
+      ],
       color: "green",
     },
   ];
 
   return (
     <View className="flex-1 bg-black items-center justify-center">
-  <View className="p-4 bg-black">
-    <View>
-      <Text className="text-center text-xl text-white font-bold">Caique Naimi</Text>
-      <Image
-        className="rounded-full h-60 w-64 mx-auto"
-        source={require("./assets/imagens/caiquenaimi.png")}
-      />
-      <Text className="text-center text-l text-white mt-4">
-        Aluno de Desenvolvimento de Sistemas cursando o 3º Semestre
-      </Text>
-      <Text className="text-center text-l text-white mt-4 font-semibold">
-        Um entusiasta da programação em constante busca por aprendizado.
-        Sempre empenhado em criar soluções inovadoras.
-      </Text>
-
-      <Text className="text-center text-xl text-white mt-4 font-bold">Projetos:</Text>
-      <View className="flex-1 items-center justify-center">
-        <Carousel
-          data={projects}
-          renderItem={({ item }) => (
-            <View className="mb-4">
-              <Text
-                style={{ color: colors[item.color] }}
-                className={`text-center text-l text-white mt-4 font-semibold`}
-              >
-                {item.title}
-              </Text>
-              <Image
-                style={{ width: "100%", height: 237, borderRadius: 10 }}
-                source={item.img}
-              />
-              <Text className="text-center text-base text-white mt-1">
-                {item.description}
-              </Text>
-              <Text className="text-center text-base text-white mt-1">
-                Tecnologias: {item.technologies.join(", ")}
-              </Text>
-            </View>
-          )}
-          sliderWidth={200}
-          itemWidth={200}
-          windowSize={3}
+      <View className="p-10 bg-black">
+        <Text
+          className="text-center text-4xl font-bold"
+          style={{ color: "#ff3a5e" }}
+        >
+          Portfólio
+        </Text>
+        <Text className="text-center text-xl text-white font-bold">
+          Caique Naimi
+        </Text>
+        <Image
+          className="rounded-full h-60 w-64 mx-auto"
+          source={require("./assets/imagens/caiquenaimi.png")}
         />
+        <Text className="text-center text-l text-white mt-4">
+          Aluno de Desenvolvimento de Sistemas cursando o 3º Semestre
+        </Text>
+        <Text className="text-center text-l text-white mt-4 font-semibold">
+          Um entusiasta da programação em constante busca por aprendizado.
+          Sempre empenhado em criar soluções inovadoras.
+        </Text>
+        <ScrollView>
+          <Text className="text-center text-xl text-white mt-4 font-bold">
+            Projetos:
+          </Text>
+          <View className="flex-1 items-center justify-center">
+            <Carousel
+              data={projects}
+              renderItem={({ item }) => (
+                <View className="mb-4">
+                  <Text
+                    style={{ color: colors[item.color] }}
+                    className={`text-center text-xl text-white mt-4 font-semibold`}
+                  >
+                    {item.title}
+                  </Text>
+                  <Image
+                    style={{ width: "100%", height: 237, borderRadius: 10 }}
+                    source={item.img}
+                  />
+                  <Text className="text-center text-base text-white mt-1">
+                    {item.description}
+                  </Text>
+                  <Text className="text-center text-base text-white mt-1 ">
+                    Tecnologias:
+                  </Text>
+                  <View className="flex-row justify-center">
+                    {item.technologies.map((tech, index) => (
+                      <Image
+                        key={index}
+                        style={{ width: 40, height: 40, marginHorizontal: 5 }}
+                        source={tech}
+                      />
+                    ))}
+                  </View>
+                </View>
+              )}
+              sliderWidth={200}
+              itemWidth={200}
+              windowSize={3}
+              loop={true}
+            />
+          </View>
+        </ScrollView>
       </View>
     </View>
-  </View>
-</View>
-
   );
 }
