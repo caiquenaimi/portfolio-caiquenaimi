@@ -1,10 +1,5 @@
 import React, { useState, useEffect } from "react";
-import {
-  Text,
-  View,
-  Image,
-  ScrollView,
-} from "react-native";
+import { Text, View, Image, ScrollView } from "react-native";
 import CardProjeto from "./components/CardProjetos/CardProjeto.jsx";
 import CardAluno from "./components/CardAluno/CardAluno.jsx";
 
@@ -18,8 +13,7 @@ export default function App() {
       if (typedText.length < textToType.length) {
         setTypedText(textToType.substring(0, typedText.length + 1));
       }
-    }, 100
-    );
+    }, 100);
 
     return () => clearTimeout(typingEffect);
   }, [typedText]);
@@ -34,11 +28,13 @@ export default function App() {
         >
           {typedText}
         </Text>
-        <ScrollView>
+        <View className="mb-5">
           <Text className="text-center text-xl text-white mt-4 font-bold">
             Projetos:
           </Text>
-         <CardProjeto />
+        </View>
+        <ScrollView>
+          <CardProjeto />
         </ScrollView>
       </View>
     </View>
